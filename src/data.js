@@ -63,15 +63,7 @@ const products = [
     buttonHoverColor: "green-700",
     CustomBaclground: "#222584",
   },
-  {
-    imageUrl: s1,
-    heading: "Super Cake Lemon",
-    description: "Description for Product 4",
-    link: "#",
-    buttonColor: "bg-yellow-500",
-    buttonHoverColor: "yellow-700",
-    CustomBaclground: "#FE0002",
-  },
+  
 ];
 
 export default products;
