@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "../App.css";
-import astronaut from "../assets/images/S1.png";
-import celebrating from "../assets/images/s2.png";
-import education from "../assets/images/s3.png"; // Fix the image import paths
+import s1 from "../assets/images/S1.png";
+import s2 from "../assets/images/s2.png";
+import s3 from "../assets/images/s3.png"; 
 import data from "../data";
 import Product from "./product";
 
-const images = [astronaut, celebrating, education, education];
+const images = [s1, s2, s3, s3];
 
 function Slidebar() {
   const NextArrow = ({ onClick }) => (
