@@ -42,7 +42,7 @@ function App() {
         </div>
       </section>
 
-      <div className="flex justify-center pt-5 pb-5 mt-5 bg-gray-50">
+      <div className="flex justify-center pt-5 pb-1 mt-5 bg-gray-50">
         <h1
           className="font-bold "
           style={{ color: "#FE0002", fontSize: "36px", lineHeight: "48px" }}
