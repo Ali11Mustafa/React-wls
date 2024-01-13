@@ -5,7 +5,7 @@ import s1 from "../assets/images/S1.png";
 import s2 from "../assets/images/s2.png";
 import s3 from "../assets/images/s3.png"; // Fix the image import paths
 
-const images = [s1, s2, education, s3];
+const images = [s1, s2, s3, s3];
 
 function Slidebar() {
   const NextArrow = ({ onClick }) => (
