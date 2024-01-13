@@ -93,7 +93,7 @@ const Header = () => {
           <div className="flex items-center justify-between mb-3 ">
             <a
               href="/"
-              className="flex items-center gap-1 text-lg text-red-600 logo"
+              className="flex items-center gap-1 text-lg logo"
             >
              
               Logo
