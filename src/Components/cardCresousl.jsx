@@ -66,13 +66,10 @@ function Slidebar() {
       );
     };
 
-    // Initial setup
     handleResize();
 
-    // Event listener for window resize
     window.addEventListener("resize", handleResize);
 
-    // Cleanup the event listener when the component unmounts
     return () => {
       window.removeEventListener("resize", handleResize);
     };

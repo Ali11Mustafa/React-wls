@@ -1,11 +1,9 @@
 import { Dialog } from "@headlessui/react";
 import React, { useState } from "react";
-// import { useLocation } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import {
-  faArrowAltCircleDown,
-  faArrowAltCircleUp,
+ 
   faCaretDown,
   faTruck,
 } from "@fortawesome/free-solid-svg-icons";
@@ -13,7 +11,6 @@ import { faFacebook, faInstagram, faWhatsapp } from "@fortawesome/free-brands-sv
 
 
 const Header = () => {
-  // const location = useLocation();
   const [mobile, setMobile] = useState(false);
 
   const active =
