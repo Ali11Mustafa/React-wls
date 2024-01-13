@@ -9,7 +9,7 @@ import "../App.css";
 
 export default function Product({ data }) {
   return (
-    <div className="flex flex-col justify-between mx-auto text-gray-900 bg-white w-[450px] h-[500px] border-red-500 rounded-lg shadow-xl ">
+    <div className="flex flex-col justify-between mx-auto text-gray-900 bg-white w-[400px] h-[500px] border-red-500 rounded-lg shadow-xl ">
       <div className="overflow-hidden rounded-t-lg">
         <img
           className="object-cover object-top w-full"
@@ -48,7 +48,7 @@ export default function Product({ data }) {
       </ul>
       <div className="">
         <button
-          className="w-full p-3 py-4 mx-auto text-2xl font-semibold text-white cla hover:shadow-lg"
+          className="w-full py-4 mx-auto text-2xl font-semibold text-white cla hover:shadow-lg"
           style={{ backgroundColor: `${data.CustomBaclground}` }}
         >
           52 Weeks
