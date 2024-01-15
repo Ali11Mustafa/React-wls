@@ -29,7 +29,7 @@ function App() {
 
             <div className="flex flex-wrap justify-center gap-4 mt-8">
               <a
-                className="block px-12 py-3 text-sm font-medium text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto"
+                className="block px-12 py-3 text-sm font-medium text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto "
                 href="/"
               >
                 Contact us
@@ -42,7 +42,7 @@ function App() {
         </div>
       </section>
 
-      <div className="flex justify-center pt-5 pb-1 mt-5 bg-gray-50">
+      <div className="flex justify-center pt-5 pb-1 mt-[15em] xl:mt-5 bg-gray-50">
         <h1
           className="font-bold "
           style={{ color: "#FE0002", fontSize: "36px", lineHeight: "48px" }}

@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Slider from "react-slick";
 import "../App.css";
 import s1 from "../assets/images/S1.png";
 import s2 from "../assets/images/s2.png";
 import s3 from "../assets/images/s3.png"; // Fix the image import paths
 
-const images = [s1, s2, s3, s3];
+const images = [s1, s2, s3, s2];
 
 function Slidebar() {
   const NextArrow = ({ onClick }) => (
@@ -48,13 +48,31 @@ function Slidebar() {
 
   const [imageIndex, setImageIndex] = useState(0);
 
+  const [numSlides, setNumSlides] = useState(1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const windowWidth = window.innerWidth;
+      setNumSlides(windowWidth < 768 ? 1 : 3);
+    };
+
+    handleResize();
+
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
   const settings = {
     infinite: true,
     lazyLoad: true,
     speed: 400,
-    slidesToShow: 3,
+    slidesToShow: numSlides,
     centerMode: true,
     centerPadding: 0,
+
     beforeChange: (current, next) => setImageIndex(next),
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
@@ -66,9 +84,30 @@ function Slidebar() {
         {images.map((img, idx) => (
           <div
             key={idx}
-            className={idx === imageIndex ? "slide activeSlide" : "slide"}
+            className={` ${
+              idx === imageIndex
+                ? "xl:w-[410px] xl:h-[197px] slide activeSlide "
+                : "slide"
+            }`}
           >
-            <img src={img} alt={img} />
+            <img
+              src={img}
+              alt={img}
+              className={` xl:w-[305px] xl:h-[256px] transition-all duration-500 ease-in-out w-full h-full`}
+              style={{
+                transform:
+                  idx === imageIndex - 1
+                    ? "rotate(25deg) "
+                    : idx === imageIndex + 1
+                    ? "rotate(-25deg)"
+                    : "none",
+              }}
+            />
+            {idx === imageIndex && (
+              <p className="absolute xl:right-[50%] right-[40%] xl:bottom-[-55%]   font-bold text-black">
+                dumpyy
+              </p>
+            )}
           </div>
         ))}
       </Slider>
