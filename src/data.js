@@ -1,4 +1,4 @@
-import s1 from "./assets/images/S2.png";
+import s1 from "./assets/images/s2.png";
 const products = [
   {
     imageUrl: s1,
