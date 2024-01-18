@@ -1,53 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Slider from "react-slick";
 import "../App.css";
-import s1 from "../assets/images/S1.png";
-import s2 from "../assets/images/s2.png";
-import s3 from "../assets/images/s3.png"; // Fix the image import paths
+import astronaut from "../assets/images/S1.png";
+import celebrating from "../assets/images/s2.png";
+import education from "../assets/images/s3.png";
+import kitkat from "../assets/images/s4.jpg";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
-const images = [s1, s2, s3, s2];
+const images = [education, astronaut, celebrating, kitkat, celebrating];
 
 function Slidebar() {
+  const imageSliderRef = useRef();
+  const indexSliderRef = useRef();
+
   const NextArrow = ({ onClick }) => (
-    <div className=" arrow next" onClick={onClick}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-6 h-6"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="m8.25 4.5 7.5 7.5-7.5 7.5"
-        />
-      </svg>
-    </div>
+    <button
+      className="absolute cursor-pointer w-[40px] h-[40px] xl:w-[60px] xl:h-[60px]  md:-bottom-[40%] xl:-bottom-[70%] -bottom-16 md:right-[35%] right-[20%] bg-white shadow-md rounded-full flex items-center justify-center"
+      onClick={() => {
+        onClick();
+        indexSliderRef.current.slickNext();
+      }}
+    >
+      <FaChevronRight className="text-red-600 xl:text-2xl pointer-events-none" />
+    </button>
   );
 
   const PrevArrow = ({ onClick }) => (
-    <div className="arrow prev" onClick={onClick}>
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        strokeWidth={1.5}
-        stroke="currentColor"
-        className="w-6 h-6"
-      >
-        <path
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          d="M15.75 19.5 8.25 12l7.5-7.5"
-        />
-      </svg>
-    </div>
+    <button
+      className="absolute cursor-pointer w-[40px] h-[40px] xl:w-[60px] xl:h-[60px] md:-bottom-[40%] xl:-bottom-[70%] -bottom-16 md:left-[35%] left-[20%]  bg-white shadow-md rounded-full  flex items-center justify-center"
+      onClick={() => {
+        onClick();
+        indexSliderRef.current.slickPrev();
+      }}
+    >
+      <FaChevronLeft className="text-red-600 xl:text-2xl pointer-events-none" />
+    </button>
   );
 
   const [imageIndex, setImageIndex] = useState(0);
-
   const [numSlides, setNumSlides] = useState(1);
 
   useEffect(() => {
@@ -68,49 +58,64 @@ function Slidebar() {
   const settings = {
     infinite: true,
     lazyLoad: true,
-    speed: 400,
+    speed: 900,
     slidesToShow: numSlides,
     centerMode: true,
     centerPadding: 0,
+    beforeChange: (current, next) => {
+      setImageIndex(next);
+      indexSliderRef.current.slickGoTo(next);
+    },
 
-    beforeChange: (current, next) => setImageIndex(next),
     nextArrow: <NextArrow />,
     prevArrow: <PrevArrow />,
   };
+  const indexSettings = {
+    infinite: true,
+    lazyLoad: true,
+    speed: 900,
+    slidesToShow: 1,
+    centerMode: true,
+    centerPadding: 0,
+    nextArrow: <div />, // Disable arrows for the index slider
+    prevArrow: <div />,
+  };
 
   return (
-    <div className="w-full slider-container lg:w-2/3">
-      <Slider {...settings}>
+    <div className="relative w-full slider-container mt-20 md:mt-0 lg:w-2/3 ">
+      <Slider ref={imageSliderRef} {...settings}>
         {images.map((img, idx) => (
           <div
             key={idx}
-            className={` ${
-              idx === imageIndex
-                ? "xl:w-[410px] xl:h-[197px] slide activeSlide "
-                : "slide"
+            className={`transition-all duration-700 ease-out ${
+              idx === imageIndex ? "" : "scale-75"
             }`}
           >
             <img
               src={img}
               alt={img}
-              className={` xl:w-[305px] xl:h-[256px] transition-all duration-500 ease-in-out w-full h-full`}
+              className={`"w-[300px] h-[200px] mx-auto transition-all duration-700 ease-out `}
               style={{
                 transform:
-                  idx === imageIndex - 1
-                    ? "rotate(25deg) "
-                    : idx === imageIndex + 1
-                    ? "rotate(-25deg)"
-                    : "none",
+                  idx !== imageIndex
+                    ? idx > imageIndex
+                      ? "rotate(-25deg)"
+                      : "rotate(25deg)"
+                    : "rotate(0)",
               }}
             />
-            {idx === imageIndex && (
-              <p className="absolute xl:right-[50%] right-[40%] xl:bottom-[-55%]   font-bold text-black">
-                dumpyy
-              </p>
-            )}
           </div>
         ))}
       </Slider>
+      <div className="absolute left-[32%]    xl:left-[41%] md:left-[40%] -bottom-[28%] md:-bottom-[35%] ml-1 xl:-bottom-[60%] text-center text-sm md:text-base h-6  xl:w-[170px] md:w-[150px] w-[140px] overflow-hidden">
+        <Slider ref={indexSliderRef} {...indexSettings}>
+          {images.map((_, idx) => (
+            <div key={idx} className="slide">
+              <p className="">Dumppy</p>
+            </div>
+          ))}
+        </Slider>
+      </div>
     </div>
   );
 }

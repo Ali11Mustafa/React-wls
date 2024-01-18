@@ -2,16 +2,18 @@ import { useState } from "react";
 import "react-multi-carousel/lib/styles.css";
 import "./App.css";
 import Slidebar from "./Components/Slidebar";
-import CardCreousk from "./Components/cardCresousl";
 import Header from "./Components/Header";
+import LatestProducts from "./Components/cardCresousl";
+import BrandColaboration from "./Components/BrandColaboration";
+import Footer from "./Components/Footer";
 
 function App() {
   const [mobile, setMobile] = useState(false);
 
   return (
-    <div className="bg-gray-50">
+    <div className="flex flex-col w-full mx-auto gap-28 max-w-[90rem] bg-[#f9f9f9]  ">
       <section
-        className={`shadow-md shadow-gray-200/40 rounded-bl-full rounded-br-full h-[600px] md:h-[650px] xl:h-[850px] hero-section ${
+        className={`shadow-md  shadow-gray-200/40 md:rounded-b-full  rounded-b-[500px] h-[850px] md:h-[650px] xl:h-[850px] hero-section ${
           mobile ? "filter blur-sm" : ""
         }`}
       >
@@ -29,7 +31,7 @@ function App() {
 
             <div className="flex flex-wrap justify-center gap-4 mt-8">
               <a
-                className="block px-12 py-3 text-sm font-medium text-white bg-red-600 rounded shadow hover:bg-red-700 focus:outline-none focus:ring active:bg-red-500 sm:w-auto "
+                className="block px-12 py-3 text-sm font-bold text-white bg-[#fe0002]  rounded-[20px] shadow  focus:outline-none focus:ring  sm:w-auto"
                 href="/"
               >
                 Contact us
@@ -42,29 +44,26 @@ function App() {
         </div>
       </section>
 
-      <div className="flex justify-center bg-gray-50">
+      <div className="flex flex-col items-center ">
         <h1
-          className="font-bold "
+          className="font-bold text-center "
           style={{ color: "#FE0002", fontSize: "36px", lineHeight: "48px" }}
         >
           Latest Product
         </h1>
-      </div>
-      <div className="flex justify-center bg-gray-50">
-          <CardCreousk />
-        </div>
-      <div>
-        
+        <LatestProducts />
 
         <div className="flex justify-center pt-5 pb-5 mt-5">
           <button
-            className="px-8 py-2 font-bold text-white rounded-full "
+            className="px-20 py-2 font-bold text-white rounded-md md:rounded-[15px] "
             style={{ backgroundColor: "#FE0002" }}
           >
             View All
           </button>
         </div>
       </div>
+      <BrandColaboration />
+      <Footer />
     </div>
   );
 }
