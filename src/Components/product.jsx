@@ -9,7 +9,7 @@ import "../App.css";
 
 export default function Product({ data }) {
   return (
-    <div className="flex flex-col justify-between text-gray-900  bg-white  w-[400px] scale-75    rounded-[20px]   overflow-hidden shadow-lg ">
+    <div className="flex flex-col justify-between text-gray-900  bg-white  w-[400px] scale-[65%] md:scale-75    rounded-[20px]   overflow-hidden shadow-lg ">
       <div className="p-4 overflow-hidden rounded-t-lg">
         <img
           className="object-cover object-top w-[300px]  mx-auto"

@@ -107,7 +107,7 @@ function Slidebar() {
           </div>
         ))}
       </Slider>
-      <div className="absolute left-[32%]    xl:left-[41%] md:left-[40%] -bottom-[28%] md:-bottom-[35%] ml-1 xl:-bottom-[60%] text-center text-sm md:text-base h-6  xl:w-[170px] md:w-[150px] w-[140px] overflow-hidden">
+      <div className="absolute left-[32%] pointer-events-none xl:left-[41%] md:left-[40%] -bottom-[28%] md:-bottom-[35%] ml-1 xl:-bottom-[60%] text-center text-sm md:text-base h-6  xl:w-[170px] md:w-[150px] w-[140px] overflow-hidden">
         <Slider ref={indexSliderRef} {...indexSettings}>
           {images.map((_, idx) => (
             <div key={idx} className="slide">
