@@ -72,7 +72,7 @@ function LatestProducts() {
   };
 
   return (
-    <div className="w-full md:scale-[70%]  sm:-translate-x-10 md:translate-x-0  lg:-translate-x-10">
+    <div className="w-full md:scale-[65%]  sm:-translate-x-10 md:translate-x-0  lg:-translate-x-10">
       <Slider {...settings}>
         {data.map((data, idx) => (
           <div key={idx}>
